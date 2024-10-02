@@ -39,91 +39,21 @@
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
 
-        /* New Shape styles for Contact Page */
+        /* Container for the shapes, aligning them on the same line */
         .shapes-container {
             display: flex;
             justify-content: center;
             align-items: center;
             margin-top: 50px;
-            flex-wrap: wrap;
         }
 
-        /* Triangle with animation (First Shape) */
-        .triangle {
-            width: 0;
-            height: 0;
-            border-left: 60px solid transparent;
-            border-right: 60px solid transparent;
-            border-bottom: 120px solid #6a5acd;
-            margin: 10px;
-            animation: bounce 3s infinite alternate;
-        }
-
-        /* Rectangle with animation (Second Shape) */
-        .rectangle {
-            width: 120px;
+        /* Blue rectangle styles (same color as the navbar) */
+        .extra-shape {
+            width: 80px;
             height: 80px;
-            background-color: #ff5733;
+            background-color: #1e90ff; /* Blue color from the navbar */
             margin: 10px;
-            animation: slide 4s infinite alternate;
-        }
-
-        /* Hexagon with animation (Third Shape) */
-        .hexagon {
-            width: 100px;
-            height: 55px;
-            background-color: #28a745;
-            position: relative;
-            margin: 10px;
-            animation: spin 6s infinite linear;
-        }
-
-        .hexagon:before,
-        .hexagon:after {
-            content: "";
-            position: absolute;
-            width: 0;
-            border-left: 50px solid transparent;
-            border-right: 50px solid transparent;
-        }
-
-        .hexagon:before {
-            bottom: 100%;
-            border-bottom: 30px solid #28a745;
-        }
-
-        .hexagon:after {
-            top: 100%;
-            width: 0;
-            border-top: 30px solid #28a745;
-        }
-
-        /* Animations */
-        @keyframes bounce {
-            0% {
-                transform: translateY(0);
-            }
-            100% {
-                transform: translateY(-15px);
-            }
-        }
-
-        @keyframes slide {
-            0% {
-                transform: translateX(0);
-            }
-            100% {
-                transform: translateX(20px);
-            }
-        }
-
-        @keyframes spin {
-            0% {
-                transform: rotate(0deg);
-            }
-            100% {
-                transform: rotate(360deg);
-            }
+            border-radius: 10px;
         }
     </style>
 </head>
@@ -144,7 +74,7 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link text-light" href="{{ path('app_author_show') }}">Authors</a>
+                        <a class="nav-link text-light" href="{{ path('app_author_list') }}">Authors</a>
                     </li>
                 </ul>
             </div>
@@ -178,18 +108,12 @@
             </form>
         </div>
 
-        <!-- Dynamic Shapes -->
+        <!-- Only the blue rectangles at the bottom -->
         <div class="shapes-container">
-            <div class="triangle"></div>
-            <div class="rectangle"></div>
-            <div class="hexagon"></div>
-        </div>
-
-        <!-- More Shapes to Push Footer Down -->
-        <div class="shapes-container">
-            <div class="hexagon"></div>
-            <div class="triangle"></div>
-            <div class="rectangle"></div>
+            <div class="extra-shape"></div>
+            <div class="extra-shape"></div>
+            <div class="extra-shape"></div>
+            <div class="extra-shape"></div>
         </div>
     </main>
 

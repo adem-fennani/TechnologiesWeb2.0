@@ -29,93 +29,45 @@
             flex-grow: 1;
         }
 
-        /* Shape styles */
+        /* Table styles */
+        .table-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .table th, .table td {
+            vertical-align: middle;
+            text-align: center;
+        }
+
+        /* Blue header styling */
+        .table thead {
+            background-color: #1e90ff;
+            color: #ffffff;
+        }
+
+        /* Container for the blue rectangles, aligning them on the same line */
         .shapes-container {
             display: flex;
             justify-content: center;
             align-items: center;
             margin-top: 50px;
-            flex-wrap: wrap;
         }
 
-        /* Rectangle with animation */
-        .rectangle {
-            width: 150px;
-            height: 100px;
-            background-color: #ffcc00;
-            margin: 10px;
-            animation: pulse 2s infinite;
-        }
-
-        /* Triangle with animation */
-        .triangle {
-            width: 0;
-            height: 0;
-            border-left: 50px solid transparent;
-            border-right: 50px solid transparent;
-            border-bottom: 100px solid #ff5733;
-            margin: 10px;
-            animation: spin 4s infinite linear;
-        }
-
-        /* Circle with animation */
-        .circle {
-            width: 100px;
-            height: 100px;
-            background-color: #28a745;
-            border-radius: 50%;
-            margin: 10px;
-            animation: scale 3s infinite alternate;
-        }
-
-        /* More shapes to fill the space */
+        /* Blue rectangle styles (same color as the navbar) */
         .extra-shape {
             width: 80px;
             height: 80px;
-            background-color: #6a5acd;
+            background-color: #1e90ff;
             margin: 10px;
             border-radius: 10px;
-            animation: move 3s infinite alternate;
         }
 
-        @keyframes move {
-            0% {
-                transform: translateY(0);
-            }
-            100% {
-                transform: translateY(10px);
-            }
-        }
-
-        /* Animations */
-        @keyframes pulse {
-            0% {
-                transform: scale(1);
-            }
-            50% {
-                transform: scale(1.2);
-            }
-            100% {
-                transform: scale(1);
-            }
-        }
-
-        @keyframes spin {
-            0% {
-                transform: rotate(0deg);
-            }
-            100% {
-                transform: rotate(360deg);
-            }
-        }
-
-        @keyframes scale {
-            0% {
-                transform: scale(1);
-            }
-            100% {
-                transform: scale(1.5);
-            }
+        /*Text for the number of authors and books */
+        .summary-text {
+            font-size: 1rem; /* Smaller font size */
+            margin: 10px 0;  /* Adjust margin for spacing */
         }
     </style>
 </head>
@@ -136,7 +88,7 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link text-light" href="{{ path('app_author_show') }}">Authors</a>
+                        <a class="nav-link text-light" href="{{ path('app_author_list') }}">Authors</a>
                     </li>
                 </ul>
             </div>
@@ -144,33 +96,40 @@
     </nav>
 
     <main class="container mt-4">
-        <h1 class="display-4">Authors</h1>
+        <h1 class="display-4 text-center">Authors</h1>
         {% if authors is not empty and authors is defined %}
         {% set totalBooks = 0 %}
-        <table>
-            <tr>
-                <th>Name</th>
-                <th>Image</th>
-                <th>Number of books</th>
-            </tr>
-            <tr {% for author in authors %}>
-                {% set totalBooks = totalBooks + author.numberOfBooks %}
-                <td>{{ author.authorName }}</td>
-                <td><img src="{{ asset(author.authorImage) }}" width=140px/></td>
-                <td>{{ author.numberOfBooks }}</td>
-            </tr {% endfor %}>
-        </table>
-        <h6 class="display-6">Number of authors: {{ authors|length }}</h6>
-        <h6 class="display-6">Number of books: {{ totalBooks }}</h6>
+        
+        <!-- Author Table in a Card -->
+        <div class="table-container">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <table class="table table-bordered table-striped">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Image</th>
+                                <th>Number of books</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        <tr {% for author in authors %}>
+                            {% set totalBooks = totalBooks + author.numberOfBooks %}
+                            <td>{{ author.authorName }}</td>
+                            <td><img src="{{ asset(author.authorImage) }}" class="img-fluid" width="140px" /></td>
+                            <td>{{ author.numberOfBooks }}</td>
+                        </tr {% endfor %}>
+                        </tbody>
+                    </table>
 
-        <!-- Dynamic Shapes -->
-        <div class="shapes-container">
-            <div class="rectangle"></div>
-            <div class="triangle"></div>
-            <div class="circle"></div>
+                    <!-- Smaller and more compact summary text -->
+                    <h6 class="summary-text text-center">Number of authors: {{ authors|length }}</h6>
+                    <h6 class="summary-text text-center">Number of books: {{ totalBooks }}</h6>
+                </div>
+            </div>
         </div>
 
-        <!-- More Shapes to Push Footer Down -->
+        <!-- Only the blue rectangles at the bottom -->
         <div class="shapes-container">
             <div class="extra-shape"></div>
             <div class="extra-shape"></div>

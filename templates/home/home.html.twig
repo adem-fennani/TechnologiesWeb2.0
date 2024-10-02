@@ -29,93 +29,21 @@
             flex-grow: 1;
         }
 
-        /* Shape styles */
+        /* Container for the shapes, aligning them on the same line */
         .shapes-container {
             display: flex;
             justify-content: center;
             align-items: center;
             margin-top: 50px;
-            flex-wrap: wrap;
         }
 
-        /* Rectangle with animation */
-        .rectangle {
-            width: 150px;
-            height: 100px;
-            background-color: #ffcc00;
-            margin: 10px;
-            animation: pulse 2s infinite;
-        }
-
-        /* Triangle with animation */
-        .triangle {
-            width: 0;
-            height: 0;
-            border-left: 50px solid transparent;
-            border-right: 50px solid transparent;
-            border-bottom: 100px solid #ff5733;
-            margin: 10px;
-            animation: spin 4s infinite linear;
-        }
-
-        /* Circle with animation */
-        .circle {
-            width: 100px;
-            height: 100px;
-            background-color: #28a745;
-            border-radius: 50%;
-            margin: 10px;
-            animation: scale 3s infinite alternate;
-        }
-
-        /* More shapes to fill the space */
+        /* Purple rectangle styles */
         .extra-shape {
             width: 80px;
             height: 80px;
-            background-color: #6a5acd;
+            background-color: #1e90ff;
             margin: 10px;
             border-radius: 10px;
-            animation: move 3s infinite alternate;
-        }
-
-        @keyframes move {
-            0% {
-                transform: translateY(0);
-            }
-            100% {
-                transform: translateY(10px);
-            }
-        }
-
-        /* Animations */
-        @keyframes pulse {
-            0% {
-                transform: scale(1);
-            }
-            50% {
-                transform: scale(1.2);
-            }
-            100% {
-                transform: scale(1);
-            }
-        }
-
-        @keyframes spin {
-            0% {
-                transform: rotate(0deg);
-            }
-            100% {
-                transform: rotate(360deg);
-            }
-        }
-
-        @keyframes scale {
-            0% {
-                transform: scale(1);
-            }
-            100% {
-                transform: scale(1.5);
-            }
         }
     </style>
 </head>
@@ -136,7 +64,7 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link text-light" href="{{ path('app_author_show') }}">Authors</a>
+                        <a class="nav-link text-light" href="{{ path('app_author_list') }}">Authors</a>
                     </li>
                 </ul>
             </div>
@@ -149,16 +77,9 @@
         <hr class="my-4">
         <p>If you have any questions, don't hesitate to reach out via the <a href="{{ path('app_contact') }}">Contact</a> page.</p>
         <hr class="my-4">
-        <p>You can check the authors via the <a href="{{ path('app_author_show') }}">Authors</a> page.</p>
+        <p>You can check the authors via the <a href="{{ path('app_author_list') }}">Authors</a> page.</p>
 
-        <!-- Dynamic Shapes -->
-        <div class="shapes-container">
-            <div class="rectangle"></div>
-            <div class="triangle"></div>
-            <div class="circle"></div>
-        </div>
-
-        <!-- More Shapes to Push Footer Down -->
+        <!-- Only the purple rectangles at the bottom -->
         <div class="shapes-container">
             <div class="extra-shape"></div>
             <div class="extra-shape"></div>
