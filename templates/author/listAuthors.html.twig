@@ -120,7 +120,7 @@
     </style>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg">
+<nav class="navbar navbar-expand-lg">
         <div class="container">
             <a class="navbar-brand" href="{{ path('app_home') }}">Home</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -144,12 +144,24 @@
     </nav>
 
     <main class="container mt-4">
-        <h1 class="display-4">Hi there!</h1>
-        <p class="lead">Welcome to my website. I am excited to have you here. Feel free to explore and learn more!</p>
-        <hr class="my-4">
-        <p>If you have any questions, don't hesitate to reach out via the <a href="{{ path('app_contact') }}">Contact</a> page.</p>
-        <hr class="my-4">
-        <p>You can check the authors via the <a href="{{ path('app_author_show') }}">Authors</a> page.</p>
+        <h1 class="display-4">Authors</h1>
+        {% if authors is not empty and authors is defined %}
+        {% set totalBooks = 0 %}
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>Image</th>
+                <th>Number of books</th>
+            </tr>
+            <tr {% for author in authors %}>
+                {% set totalBooks = totalBooks + author.numberOfBooks %}
+                <td>{{ author.authorName }}</td>
+                <td><img src="{{ asset(author.authorImage) }}" width=140px/></td>
+                <td>{{ author.numberOfBooks }}</td>
+            </tr {% endfor %}>
+        </table>
+        <h6 class="display-6">Number of authors: {{ authors|length }}</h6>
+        <h6 class="display-6">Number of books: {{ totalBooks }}</h6>
 
         <!-- Dynamic Shapes -->
         <div class="shapes-container">
@@ -174,5 +186,8 @@
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    {% else %}
+        <h6 class="display-6">This table is not defined</h6>
+    {% endif %}
 </body>
 </html>
