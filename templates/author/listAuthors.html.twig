@@ -6,14 +6,12 @@
     <!-- Link to Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        /* Navbar and footer gradient */
         .navbar, .footer {
             background: linear-gradient(90deg, #ff7f50, #1e90ff);
         }
 
-        /* Home link color back to white */
         .navbar .navbar-brand {
-            color: #ffffff !important;
+            color: #ffffff;
         }
 
         /* Apply Open Sans font to the body */
@@ -89,6 +87,13 @@
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
                         <a class="nav-link text-light" href="{{ path('app_author_list') }}">Authors</a>
+                    </li>
+                </ul>
+            </div>
+                        <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link text-light" href="{{ path('app_crud_author') }}">CRUD</a>
                     </li>
                 </ul>
             </div>
