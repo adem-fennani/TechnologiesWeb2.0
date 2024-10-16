@@ -64,4 +64,40 @@ class CrudAuthorController extends AbstractController
         
         return $this->redirectToRoute("app_crud_author");
     }
+
+    // Method to update an author
+    #[Route('/update/{id}', name: 'app_crud_update')]
+    public function updateAuthor(Author $author, ManagerRegistry $doctrine): Response {
+        $author->setName("Mehdi");
+        $author->setEmail("mehdi@gmail.com");
+        $author->setAddress("Tunis");
+        $author->setNbrBooks("11");
+
+        // Persist the object in the doctrine
+        $em = $doctrine->getManager();
+        $em->persist($author);
+        $em->flush();
+
+        return $this->redirectToRoute("app_crud_author");
+    }
+
+    // 2nd method to update an author
+    // #[Route('/update/{id}', name: 'app_crud_update')]
+    // public function updateAuthor(Request $request, AuthorRepository $rep, ManagerRegistry $doctrine): Response {
+    //     // Get the old object from the data base
+    //     $id = $request->get("id");
+    //     $author = $rep->find($id);
+
+    //     // Update the object
+    //     $author->setName("Mustapha");
+    //     $author->setEmail("Mustapha@gmail.com");
+    //     $author->setAddress("Zaghouan");
+    //     $author->setNbrBooks("5");
+
+    //     // Dave update in the DB
+    //     $em = $doctrine->getManager();
+    //     $em->flush();
+
+    //     return $this->redirectToRoute("app_crud_author");
+    // }
 }
