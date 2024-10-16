@@ -54,4 +54,14 @@ class CrudAuthorController extends AbstractController
 
         return $this->redirectToRoute("app_crud_author");
     }
+
+    // Method to delete an author
+    #[Route('/delete/{id}', name: 'app_crud_delete')]
+    public function deleteAuthor(Author $author, ManagerRegistry $doctrine): Response {
+        $em = $doctrine->getManager();
+        $em->remove($author);
+        $em->flush();
+        
+        return $this->redirectToRoute("app_crud_author");
+    }
 }
