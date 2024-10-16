@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>CRUD</title>
+    <title>Library</title>
     {% include 'links.html.twig' %}
     <link rel="stylesheet" href="{{ asset('styles/main.css') }}">
 </head>
 <body>
     {% include 'navbar.html.twig' %}
     <main class="container mt-4">
-        <h1>CRUD (Author)</h1>
+        <h1>CRUD (Library)</h1>
         <div class="table-container">
             <div class="card shadow-sm">
                 <div class="card-body">
@@ -17,19 +17,17 @@
                             <tr>
                                 <th>ID</th>
                                 <th>Name</th>
-                                <th>Email</th>
-                                <th>Number of Books</th>
-                                <th>Address</th>
+                                <th>Website</th>
+                                <th>Creation date</th>
                             </tr>
                         </thead>
                         <tbody>
-                            {% for author in list %}
+                            {% for library in list %}
                             <tr>
-                                <td>{{author.id}}</td>
-                                <td>{{author.name}}</td>
-                                <td>{{author.email}}</td>
-                                <td>{{author.nbrBooks}}</td>
-                                <td>{{author.address}}</td>
+                                <td>{{library.id}}</td>
+                                <td>{{library.name}}</td>
+                                <td>{{library.website}}</td>
+                                <td>{{ library.creationDate|date('Y-m-d') }}</td>
                             </tr>
                             {% endfor %}
                         </tbody>
