@@ -2,7 +2,10 @@
 
 namespace App\Controller;
 
+use App\Entity\Author;
 use App\Repository\AuthorRepository;
+use Doctrine\Persistence\ManagerRegistry;
+use Symfony\Bridge\Doctrine\ManagerRegistry as DoctrineManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -31,5 +34,24 @@ class CrudAuthorController extends AbstractController
         // die();
         return $this->render("crud_author/list.html.twig",
         ["list"=>$authors]);
+    }
+
+    // Method to insert a new author
+    #[Route('/new', name: 'app_crud_create')]
+    public function newAuthor(ManagerRegistry $doctrine): Response {
+
+        // Create an instance from the class author
+        $author = new Author();
+        $author->setName("Mohamed");
+        $author->setEmail("mohamed@gmail.com");
+        $author->setAddress("Ariana");
+        $author->setNbrBooks("7");
+
+        // Persist the object in the doctrine
+        $em = $doctrine->getManager();
+        $em->persist($author);
+        $em->flush();
+
+        return $this->redirectToRoute("app_crud_author");
     }
 }
