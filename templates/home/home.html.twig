@@ -8,15 +8,19 @@
     {% include 'navbar.html.twig' %}
     <main class="container mt-4">
         <h1 class="display-4">Hi there!</h1>
-        <p class="lead">Welcome to my website. I am excited to have you here. Feel free to explore and learn more!</p>
+        <p class="lead">Welcome to my website. I am excited to have you here. Feel free to explore!</p>
+        <p>You can check the authors via the <a href="{{ path('app_crud_author') }}">Authors</a> page.</p>
         <hr class="my-4">
-        <p>If you have any questions, don't hesitate to reach out via the <a href="{{ path('app_contact') }}">Contact</a> page.</p>
+        <p>You can check the authors via the <a href="{{ path('app_library_list') }}">Libraries</a> page.</p>
         <hr class="my-4">
-        <p>You can check the authors via the <a href="{{ path('app_author_list') }}">Authors</a> page.</p>
-        <hr class="my-4">
-        <p>Feel free to try some basic functionalities via the <a href="{{ path('app_crud_author') }}">CRUD</a> page.</p>
+        <p>Take a look at some books via the <a href="{{ path('app_book_list') }}">Books</a> page. You can add one <a href="{{ path('app_book_create') }}">here</a>!</p>
         <hr class="my-4">
         <p>You may try some new stuff via the <a href="{{ path('app_author_show') }}">Test</a> page.</p>
+        <hr class="my-4">
+        <p>Don't hesitate to reach out via the <a href="{{ path('app_contact') }}">Contact</a> page. (Unused page)</p>
+        <hr class="my-4">
+        <p>Check out the <a href="{{ path('app_author_list') }}">Authors</a> page [Static]. (Unused page)</p>
+        <hr class="my-4">
 
         <div class="shapes-container">
             <div class="extra-shape"></div>

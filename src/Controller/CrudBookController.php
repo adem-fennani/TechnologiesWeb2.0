@@ -15,7 +15,7 @@ use Symfony\Component\Routing\Attribute\Route;
 #[Route('/crud/book')]
 class CrudBookController extends AbstractController
 {
-    #[Route('/new', name: 'app_crud_book')]
+    #[Route('/new', name: 'app_book_create')]
     public function newBook(ManagerRegistry $doctrine, Request $request): Response
     {
         // Create instance of book
