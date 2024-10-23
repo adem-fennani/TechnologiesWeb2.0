@@ -42,10 +42,10 @@ class CrudAuthorController extends AbstractController
 
         // Create an instance from the class author
         $author = new Author();
-        $author->setName("Mohamed");
-        $author->setEmail("mohamed@gmail.com");
-        $author->setAddress("Ariana");
-        $author->setNbrBooks("7");
+        $author->setName("Aziz");
+        $author->setEmail("aziz@author.com");
+        $author->setAddress("Tunis");
+        $author->setNbrBooks("25");
 
         // Persist the object in the doctrine
         $em = $doctrine->getManager();
@@ -68,9 +68,9 @@ class CrudAuthorController extends AbstractController
     // Method to update an author
     #[Route('/update/{id}', name: 'app_crud_update')]
     public function updateAuthor(Author $author, ManagerRegistry $doctrine): Response {
-        $author->setName("Mehdi");
-        $author->setEmail("mehdi@gmail.com");
-        $author->setAddress("Tunis");
+        $author->setName("Yassine");
+        $author->setEmail("yassine@author.com");
+        $author->setAddress("Monastir");
         $author->setNbrBooks("11");
 
         // Persist the object in the doctrine

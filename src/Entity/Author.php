@@ -21,8 +21,8 @@ class Author
     #[ORM\Column(length: 255)]
     private ?string $email = null;
 
-    #[ORM\Column(nullable: true)]
-    private ?int $nbrBooks = null;
+    #[ORM\Column(name: "nbr_books", type: "integer", nullable: true)]
+    private ?int $nbrBooks = null;    
 
     #[ORM\Column(length: 255)]
     private ?string $Address = null;
